@@ -1,7 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UsermanagementhomeComponent } from './components/usermanagementhome/usermanagementhome.component';
+import { CreateuserComponent } from './components/createuser/createuser.component';
+import { LoginComponent } from './components/login/login.component';
+import { FillsurveyComponent } from '../user/components/fillsurvey/fillsurvey.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: UsermanagementhomeComponent,
+  },
+  {
+    path: 'createuser',
+    component: CreateuserComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
