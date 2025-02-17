@@ -1,0 +1,29 @@
+.main-container {
+    font-size: large;
+    border-radius: 1rem;
+    background-color: rgba(134, 181, 227, 0.395);
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-container a {
+    text-decoration: none;
+}
+
+.logo-container {
+    padding: 1.5rem;
+}
+
+.user-actions-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.user-actions-container a {
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+

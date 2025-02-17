@@ -5,6 +5,7 @@ import { UsermanagementRoutingModule } from './usermanagement-routing.module';
 import { UsermanagementhomeComponent } from './components/usermanagementhome/usermanagementhome.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateuserComponent } from './components/createuser/createuser.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CreateuserComponent } from './components/createuser/createuser.componen
   ],
   imports: [
     CommonModule,
-    UsermanagementRoutingModule
+    UsermanagementRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class UsermanagementModule { }

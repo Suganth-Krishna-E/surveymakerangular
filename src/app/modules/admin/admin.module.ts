@@ -6,6 +6,7 @@ import { AdminhomeComponent } from './components/adminhome/adminhome.component';
 import { CreatesurveyComponent } from './components/createsurvey/createsurvey.component';
 import { SurveydashboardComponent } from './components/surveydashboard/surveydashboard.component';
 import { SurveystatsComponent } from './components/surveystats/surveystats.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SurveystatsComponent } from './components/surveystats/surveystats.compo
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

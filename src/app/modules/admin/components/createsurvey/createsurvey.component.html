@@ -1,1 +1,17 @@
-<p>createsurvey works!</p>
+<div class="main-container">
+    <form [formGroup]="createSurveyFormGroup" (ngSubmit)="onSubmitCreateSurvey()">
+        <div class="survey-title-description-holder">
+            <div class="survey-title-container">
+                <label for="survey-title">Survey Title</label>
+                <textarea appTextAreaResize formControlName="title" id="survey-title">Enter the title of survey</textarea>
+            </div>
+            <div class="survey-description-container">
+                <label for="survey-description">Survey Description</label>
+                <textarea appTextAreaResize formControlName="description" id="survey-description">Enter the description of survey</textarea>
+            </div>
+        </div>
+        <div class="survey-questions-container">
+            
+        </div>
+    </form> 
+</div>

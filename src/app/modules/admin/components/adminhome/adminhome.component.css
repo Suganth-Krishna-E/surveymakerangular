@@ -1,0 +1,28 @@
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: rgba(134, 181, 227, 0.395);
+}
+
+.main-container a {
+    text-decoration: none;
+}
+
+.components-director {
+    display: flex;
+    gap: 1rem;
+}
+
+.components-director a {
+    font-size: large;
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+}
+
+.user-name-holder {
+    padding: 0.5rem;
+    font-size: large;
+}

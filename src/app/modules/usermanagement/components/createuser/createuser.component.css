@@ -1,0 +1,53 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.display-header {
+    font-size: x-large;
+    padding: 1rem;
+}
+
+.create-user-container form{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    width: 35%;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-container input {
+    border-radius: 1rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+.input-container label {
+    font-size: larger;
+    padding: 0 1rem;
+}
+
+.submit-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.submit-container button {
+    font-size: large;
+    width: 15%;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+}

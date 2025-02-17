@@ -1,0 +1,61 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.display-header {
+    font-size: x-large;
+    padding: 1rem;
+}
+
+.login-container form{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-container input {
+    border-radius: 1rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+.input-container label {
+    font-size: larger;
+    padding: 0 1rem;
+}
+
+.user-type-selector {
+    display: flex;
+    border: 2px solid black;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.user-type-selector input {
+    font-size: large;
+}
+
+.login-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.login-button-container button {
+    font-size: large;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+}

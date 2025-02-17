@@ -1,4 +1,29 @@
 <div class="main-container">
-    <a routerLink="../user">User Login</a>
-    <a routerLink="../admin">Admin Login</a>
+    <div class="display-header">
+        Login to site
+    </div>
+    <div class="login-container">
+        <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmitLogin()">
+            <div class="input-container">
+                <label>User Id</label>
+                <input type="text" formControlName="id" placeholder="Enter user Id" />
+            </div>
+            <div class="input-container">
+                <label>Password</label>
+                <input type="password" formControlName="password" placeholder="Enter your password" />
+            </div>
+            <div class="input-container">
+                <label>User type</label>
+                <div class="user-type-selector">
+                    <input type="radio" name="user-type" id="type-admin"><label for="type-admin">Admin</label>
+                    <input type="radio" name="user-type" id="type-user"><label for="type-user">User</label>
+                </div>
+            </div>
+            <div class="login-button-container">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+    <a [routerLink]="['../admin', loginFormGroup.get('id')?.value]">Admin</a>
+    <a [routerLink]="['../user', loginFormGroup.get('id')?.value]">User</a>
 </div>

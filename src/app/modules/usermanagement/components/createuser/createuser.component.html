@@ -1,1 +1,37 @@
-<a routerLink="../login">Login</a>
+<!-- <a routerLink="../login">Login</a> -->
+ <div class="main-container">
+    <div class="display-header">
+        Create an user account
+    </div>
+    <div class="create-user-container">
+        <form [formGroup]="createUserFormGroup" (ngSubmit)="onSubmitCreateUser()">
+            <div class="input-container">
+                <label>User Id</label>
+                <input type="text" formControlName="id" placeholder="Enter unique Id to check Availability" />
+            </div>
+            <div class="input-container">
+                <label>Name</label>
+                <input type="text" formControlName="name" placeholder="Enter your name" />
+            </div>
+            <div class="input-container">
+                <label>Email ID</label>
+                <input type="text" formControlName="email" placeholder="Enter your mail ID" />
+            </div>
+            <div class="input-container">
+                <label>Pincode</label>
+                <input type="text" formControlName="pincode" placeholder="Enter Indian Pincode" />
+            </div>
+            <div class="input-container">
+                <label>Password</label>
+                <input type="text" formControlName="password" placeholder="Enter your password" />
+            </div>
+            <div class="input-container">
+                <label>Confirm Password</label>
+                <input type="text" formControlName="confirmPassword" placeholder="Re-enter the same password" />
+            </div>
+            <div class="submit-container">
+                <button type="submit">Create User</button>
+            </div>
+        </form>
+    </div>
+ </div>
