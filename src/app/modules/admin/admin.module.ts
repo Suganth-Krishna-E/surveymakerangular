@@ -7,6 +7,7 @@ import { CreatesurveyComponent } from './components/createsurvey/createsurvey.co
 import { SurveydashboardComponent } from './components/surveydashboard/surveydashboard.component';
 import { SurveystatsComponent } from './components/surveystats/surveystats.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextAreaResizeDirective } from '../../directives/text-area-resize.directive';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminhomeComponent,
     CreatesurveyComponent,
     SurveydashboardComponent,
-    SurveystatsComponent
+    SurveystatsComponent,
+    TextAreaResizeDirective
   ],
   imports: [
     CommonModule,

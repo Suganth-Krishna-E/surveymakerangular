@@ -7,7 +7,6 @@ export class TextAreaResizeDirective {
 
   constructor(private element: ElementRef, private renderer: Renderer2) { 
     this.adjustHeight();
-    renderer.setStyle(element.nativeElement, 'backgroundColor', 'yellow');
   }
 
   @HostListener('input') 
@@ -18,7 +17,6 @@ export class TextAreaResizeDirective {
   private adjustHeight(): void {
     const textArea = this.element.nativeElement;
     textArea.style.height = 'auto';
-    textArea.style.border = '2px solid red';
     textArea.style.height = `${textArea.scrollHeight}px`;
   }
 

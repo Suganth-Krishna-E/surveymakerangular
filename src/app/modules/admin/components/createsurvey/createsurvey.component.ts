@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { TextAreaResizeDirective } from '../../../../directives/text-area-resize.directive';
 
 @Component({
   selector: 'app-createsurvey',
@@ -20,5 +19,9 @@ export class CreatesurveyComponent {
 
   onSubmitCreateSurvey() {
     console.log(this.createSurveyFormGroup);
+  }
+
+  addQuestion() {
+    console.log("add question");
   }
 }
