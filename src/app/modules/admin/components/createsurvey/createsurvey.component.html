@@ -11,9 +11,9 @@
         </div>
       </div>
 
-      <div class="question-container" *ngFor="let question of questions.controls; let i = index">
-        <div [formGroupName]="i">
-          <app-question></app-question>
+      <div class="question-container" *ngFor="let question of questions.value; let i = index">
+        <div [formGroup]="question">
+          <app-question [formGroup]="question" (copy)="copyQuestion(i)" (delete)="deleteQuestion(i)"></app-question>
         </div>
       </div>
   

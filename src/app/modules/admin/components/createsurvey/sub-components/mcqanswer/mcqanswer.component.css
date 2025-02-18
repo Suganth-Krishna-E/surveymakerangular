@@ -9,3 +9,9 @@
     flex-direction: column;
     gap: 0.4rem;
 }
+
+.mcq-options-container div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}

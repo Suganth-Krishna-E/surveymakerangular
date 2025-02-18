@@ -48,3 +48,32 @@
 .answer-container {
     width: 75%;
 }
+
+.answer-delete-button-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.delete-copy-container {
+    width: 25%;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.delete-container {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    background-color: #ff1c0c;
+    border: #ff1c0c;
+    color: white;
+}
+
+.copy-container {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: rgb(50, 222, 119);
+    background-color: rgb(50, 222, 119);
+    color: black;
+}
+

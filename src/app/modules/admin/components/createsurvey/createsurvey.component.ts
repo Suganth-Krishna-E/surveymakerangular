@@ -8,13 +8,13 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 })
 export class CreatesurveyComponent {
   createSurveyFormGroup: FormGroup;
-
   constructor() {
     this.createSurveyFormGroup = new FormGroup({
       title: new FormControl('', []),
       description: new FormControl('', []),
       questions: new FormArray([]),  
     });
+
   }
 
   get questions() {
@@ -23,11 +23,22 @@ export class CreatesurveyComponent {
 
   addQuestion() {
     const questionGroup = new FormGroup({
-      questionType: new FormControl('text', []),  
+      questionType: new FormControl('', []),  
       questionText: new FormControl('', []),
+      questionAnswer: new FormGroup({})
     });
 
     this.questions.push(questionGroup);  
+  }
+
+  copyQuestion(index: number) {
+    const questionGroup = this.questions.at(index);
+
+    this.questions.insert(index + 1, questionGroup);
+  }
+
+  deleteQuestion(index: number) {
+    this.questions.removeAt(index);
   }
 
   onSubmitCreateSurvey() {

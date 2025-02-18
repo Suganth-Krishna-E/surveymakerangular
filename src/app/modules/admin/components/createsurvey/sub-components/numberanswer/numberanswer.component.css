@@ -1,0 +1,11 @@
+.number-input-container {
+    width: 100%;
+    display: flex;
+}
+
+.number-input-container input {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
