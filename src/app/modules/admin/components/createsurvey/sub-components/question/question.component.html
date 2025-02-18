@@ -1,0 +1,29 @@
+<div class="question-container">
+    
+    <div class="question-title-type-container">
+      <div class="question-title-container">
+        <input type="text" [(ngModel)]="questionTitle" placeholder="Enter question title" />
+      </div>
+      <div class="question-type-selector-container">
+        <select [(ngModel)]="selectedType">
+          <option value="text" selected>Text</option>
+          <option value="scq">SCQ</option>
+          <option value="mcq">MCQ</option>
+          <option value="number">Number</option>
+          <option value="file">File</option>
+        </select>
+      </div>
+    </div>
+    
+    
+    <div class="answer-container">
+      <ng-container [ngSwitch]="selectedType">
+        <app-textanswer *ngSwitchCase="'text'"></app-textanswer>
+        <app-scqanswer *ngSwitchCase="'scq'"></app-scqanswer>
+        <app-mcqanswer *ngSwitchCase="'mcq'"></app-mcqanswer>
+        <app-numberanswer *ngSwitchCase="'number'"></app-numberanswer>
+        <app-fileanswer *ngSwitchCase="'file'"></app-fileanswer>
+      </ng-container>
+    </div>
+  </div>
+  

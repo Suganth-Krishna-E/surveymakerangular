@@ -1,0 +1,16 @@
+<div class="file-input-type-container">
+    <div class="file-input-container">
+        <input type="file" [attr.accept]="acceptedFileType">
+
+    </div>
+    <div class="file-type-selector-container">
+        <select (change)="updateAcceptedFileType($event)">
+            <option value="pdf">PDF</option>
+            <option value="docx">DOCX</option>
+            <option value="png">PNG</option>
+            <option value="jpg">JPG</option>
+            <option value="xlsx">EXCEL</option>
+        </select>
+        <input type="text" placeholder="Other formats" (input)="updateCustomFileType($event)">
+    </div>
+</div>

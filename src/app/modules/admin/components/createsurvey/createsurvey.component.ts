@@ -13,15 +13,25 @@ export class CreatesurveyComponent {
     this.createSurveyFormGroup = new FormGroup({
       title: new FormControl('', []),
       description: new FormControl('', []),
-      questions: new FormArray([]),
+      questions: new FormArray([]),  
     });
   }
 
-  onSubmitCreateSurvey() {
-    console.log(this.createSurveyFormGroup);
+  get questions() {
+    return (this.createSurveyFormGroup.get('questions') as FormArray);
   }
 
   addQuestion() {
-    console.log("add question");
+    const questionGroup = new FormGroup({
+      questionType: new FormControl('text', []),  
+      questionText: new FormControl('', []),
+    });
+
+    this.questions.push(questionGroup);  
   }
+
+  onSubmitCreateSurvey() {
+    console.log(this.createSurveyFormGroup.value); 
+  }
+
 }
