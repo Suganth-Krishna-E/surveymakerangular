@@ -1,0 +1,11 @@
+* {
+    font-size: 1.1rem;
+    border-radius: 1rem;
+    padding: 0.2rem 1rem;
+}
+
+.mcq-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}

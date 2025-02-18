@@ -10,6 +10,12 @@
           <textarea appTextAreaResize formControlName="description" id="survey-description">Enter the description of survey</textarea>
         </div>
       </div>
+
+      <div class="question-container" *ngFor="let question of questions.controls; let i = index">
+        <div [formGroupName]="i">
+          <app-question></app-question>
+        </div>
+      </div>
   
       <div class="survey-questions-container">
         <div class="add-question-submit-container">
@@ -18,13 +24,6 @@
           </div>
           <div class="submit-button-container">
             <button type="submit">Publish Survey</button>
-          </div>
-        </div>
-  
-        <!-- Dynamic Questions -->
-        <div *ngFor="let question of questions.controls; let i = index">
-          <div [formGroupName]="i">
-            <app-question></app-question>
           </div>
         </div>
       </div>

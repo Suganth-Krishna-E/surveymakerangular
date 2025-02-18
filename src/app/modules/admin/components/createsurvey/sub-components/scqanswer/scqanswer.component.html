@@ -1,6 +1,6 @@
 <div class="mcq-options-container">
     <div *ngFor="let option of options; let i = index" class="option-{{ option.id }}">
-        <input type="checkbox" />
+        <input type="radio" disabled />
         <input type="text" [(ngModel)]="option.value" placeholder="Enter option text" />
         <button type="button" (click)="removeOption(i)" *ngIf="options.length > 1">Remove</button>
     </div>
