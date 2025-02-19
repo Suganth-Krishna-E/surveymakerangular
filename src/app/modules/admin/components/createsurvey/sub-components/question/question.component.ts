@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-question',
@@ -7,17 +8,35 @@ import { FormGroup } from '@angular/forms';
   styleUrl: './question.component.css'
 })
 export class QuestionComponent {
+
+  subscriptions!: Array<Subscription>;
+
   @Input() 
-  formGroup: FormGroup = new FormGroup({});
+  formGroupQuestion!: FormGroup;
 
   @Output()
-  copy: EventEmitter<null> = new EventEmitter<null>();
+  copy: EventEmitter<void> = new EventEmitter<void>();
 
   @Output()
-  delete: EventEmitter<null> = new EventEmitter<null>();
+  delete: EventEmitter<void> = new EventEmitter<void>();
 
   selectedType: string = 'text';
-  questionTitle: string = '';
+
+  ngOnInit() {
+    this.subscriptions = new Array<Subscription>;
+    this.selectedType = this.formGroupQuestion.get('type')?.value;
+
+    const selectChangeSubscription = this.formGroupQuestion.get('type')?.valueChanges.subscribe((newValue) => {
+      this.selectedType = newValue;
+    });
+
+    this.subscriptions.push(selectChangeSubscription ?? new Subscription());
+  }
+
+  getFormControl() {
+    return this.formGroupQuestion as FormGroup;
+  }
+  
 
   deleteQuestion() {
     this.delete.emit();
@@ -25,6 +44,12 @@ export class QuestionComponent {
 
   copyQuestion() {
     this.copy.emit();
+  }
+
+  ngOnDestroy() {    
+    this.subscriptions.forEach((subription) => {
+      subription.unsubscribe();
+    });
   }
 
 }

@@ -4,7 +4,7 @@
 
     </div>
     <div class="file-type-selector-container">
-        <select (change)="updateAcceptedFileType($event)">
+        <select (change)="updateAcceptedFileType($event)" [formControl]="getFileTypeControl()">
             <option value="pdf">PDF</option>
             <option value="docx">DOCX</option>
             <option value="png">PNG</option>

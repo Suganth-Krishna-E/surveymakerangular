@@ -1,7 +1,6 @@
 * {
     font-size: 1.1rem;
     border-radius: 1rem;
-    padding: 0.2rem 1rem;
 }
 
 .mcq-options-container {
@@ -12,6 +11,11 @@
 
 .mcq-options-container div {
     display: flex;
-    gap: 1rem;
     align-items: center;
+}
+
+.mcq-options-container div input[type='text'], 
+.mcq-options-container div button {
+    padding: 0.2rem 1rem;
+    margin-right: 1rem;
 }

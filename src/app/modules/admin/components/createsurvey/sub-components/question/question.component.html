@@ -1,12 +1,12 @@
-<div class="question-container" [formGroup]="formGroup">
+<div class="question-container" [formGroup]="formGroupQuestion">
   <div class="question-title-type-container">
     <div class="question-title-container">
       <label>Question Title</label>
-      <input type="text" [(ngModel)]="questionTitle" placeholder="Enter question title" formControlName="questionTite" />
+      <input type="text" placeholder="Enter question title" formControlName="title" />
     </div>
     <div class="question-type-selector-container">
       <div class="question-type-text">Question Type</div>
-      <select [(ngModel)]="selectedType" formControlName="questionType">
+      <select formControlName="type">
         <option value="text" selected>Text</option>
         <option value="scq">SCQ</option>
         <option value="mcq">MCQ</option>
@@ -14,27 +14,25 @@
         <option value="file">File</option>
       </select>
     </div>
-  </div>
+  </div>  
 
   <div class="answer-delete-button-container">
     <div class="answer-container">
       <ng-container [ngSwitch]="selectedType">
         <app-textanswer *ngSwitchCase="'text'"></app-textanswer>
-        <app-scqanswer *ngSwitchCase="'scq'"></app-scqanswer>
-        <app-mcqanswer *ngSwitchCase="'mcq'"></app-mcqanswer>
+        <app-scqanswer [answerFormGroup]="getFormControl()" *ngSwitchCase="'scq'"></app-scqanswer>
+        <app-mcqanswer [answerFormGroup]="getFormControl()" *ngSwitchCase="'mcq'"></app-mcqanswer>
         <app-numberanswer *ngSwitchCase="'number'"></app-numberanswer>
-        <app-fileanswer *ngSwitchCase="'file'"></app-fileanswer>
+        <app-fileanswer [answerFormGroup]="getFormControl()" *ngSwitchCase="'file'"></app-fileanswer>
       </ng-container>
     </div>
     <div class="delete-copy-container">
-      <button class="delete-container" (click)="deleteQuestion()">
+      <button type="button" class="delete-container" (click)="deleteQuestion()">
         ✗ Delete
       </button>
-      <button class="copy-container" (click)="copyQuestion()">
+      <button type="button" class="copy-container" (click)="copyQuestion()">
         📋 Copy
       </button>
     </div>
   </div>
-
-  
 </div>

@@ -1,0 +1,53 @@
+{
+    "title": "Title Survey",
+    "description": "Description Survey",
+    "questions": [
+        {
+            "questionNumber": "1",
+            "title": "Title-1",
+            "type": "text",
+            "options": [],
+            "notes": "",
+            "fileType": ""
+        },
+        {
+            "questionNumber": "2",
+            "title": "Title-2",
+            "type": "scq",
+            "options": [
+                "Option-1",
+                "Option-2"
+            ],
+            "notes": "",
+            "fileType": ""
+        },
+        {
+            "questionNumber": "3",
+            "title": "Title-3",
+            "type": "mcq",
+            "options": [
+                "Option-1",
+                "Option-2"
+            ],
+            "notes": "",
+            "fileType": ""
+        },
+        {
+            "questionNumber": "4",
+            "title": "Title-4",
+            "type": "numeric",
+            "options": [],
+            "notes": "",
+            "fileType": ""
+        },
+        {
+            "questionNumber": "5",
+            "title": "Title-5",
+            "type": "file",
+            "options": [],
+            "notes": "",
+            "fileType": "pdf"
+        }
+    ],
+    "adminId": "Suganth Krishna E"
+}

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-mcqanswer',
@@ -7,13 +7,27 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './mcqanswer.component.css'
 })
 export class McqanswerComponent {
-  options: { id: number; value: string }[] = [{ id: 1, value: '' }];
+  @Input() answerFormGroup!: FormGroup;
+
+  ngOnInit() {
+    this.answerFormGroup.controls['options'] = new FormArray([]);
+    this.optionsFromArray.push(new FormControl());
+  }
+
+  get optionsFromArray() {
+    return this.answerFormGroup.controls['options'] as FormArray;
+  }
+
+  getCurrentOptionControl(index: number) {
+    return this.optionsFromArray.at(index) as FormControl;
+  }
 
   addOption() {
-    this.options.push({ id: this.options.length + 1, value: '' });
+    const optionControl = new FormControl('');
+    this.optionsFromArray.push(optionControl);
   }
 
   removeOption(index: number) {
-    this.options.splice(index, 1);
+    this.optionsFromArray.removeAt(index);
   }
 }

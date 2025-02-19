@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-fileanswer',
@@ -6,6 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './fileanswer.component.css',
 })
 export class FileanswerComponent {
+  @Input()
+  answerFormGroup!: FormGroup;
+
+  getFileTypeControl() {
+    return this.answerFormGroup.controls['fileType'] as FormControl;
+  }
+
   acceptedFileType: string = 'application/pdf';
 
   updateAcceptedFileType(event: Event) {

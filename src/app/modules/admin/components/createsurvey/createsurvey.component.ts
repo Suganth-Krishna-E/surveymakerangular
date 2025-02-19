@@ -18,17 +18,22 @@ export class CreatesurveyComponent {
   }
 
   get questions() {
-    return (this.createSurveyFormGroup.get('questions') as FormArray);
+    return this.createSurveyFormGroup.get('questions') as FormArray;
   }
 
   addQuestion() {
     const questionGroup = new FormGroup({
-      questionType: new FormControl('', []),  
-      questionText: new FormControl('', []),
-      questionAnswer: new FormGroup({})
+      type: new FormControl(),  
+      title: new FormControl(),
+      options: new FormArray([]),
+      fileType: new FormControl()
     });
 
     this.questions.push(questionGroup);  
+  }
+
+  getFormControl(index: number) {
+    return this.questions.controls[index] as FormGroup;
   }
 
   copyQuestion(index: number) {
@@ -42,7 +47,12 @@ export class CreatesurveyComponent {
   }
 
   onSubmitCreateSurvey() {
-    console.log(this.createSurveyFormGroup.value); 
+    console.log(this.createSurveyFormGroup); 
   }
+
+  trackByFn(index: number, item: any) {
+    return item.id; 
+  }
+  
 
 }
