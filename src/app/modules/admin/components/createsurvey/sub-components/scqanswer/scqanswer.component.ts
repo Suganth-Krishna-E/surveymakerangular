@@ -10,22 +10,25 @@ export class ScqanswerComponent implements OnInit {
   @Input() answerFormGroup!: FormGroup;
 
   ngOnInit() {
-    this.answerFormGroup.controls['options'] = new FormArray([])
-    this.optionsFromArray.push(new FormControl());
+    if (!this.answerFormGroup.get('options')) {
+      this.answerFormGroup.addControl('options', new FormArray([]));
+    }
+
+    if (this.optionsFromArray.length === 0) {
+      this.addOption();
+    }
   }
 
-  get optionsFromArray() {
-    return this.answerFormGroup.controls['options'] as FormArray;
+  get optionsFromArray(): FormArray {
+    return this.answerFormGroup.get('options') as FormArray;
   }
 
-  getCurrentOptionControl(index: number) {
+  getCurrentOptionControl(index: number): FormControl {
     return this.optionsFromArray.at(index) as FormControl;
   }
 
   addOption() {
-    const optionControl = new FormControl('');
-    console.log(this.optionsFromArray);
-    this.optionsFromArray.push(optionControl);
+    this.optionsFromArray.push(new FormControl(''));
   }
 
   removeOption(index: number) {

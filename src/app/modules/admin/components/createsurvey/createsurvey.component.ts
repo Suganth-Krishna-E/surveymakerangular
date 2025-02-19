@@ -23,6 +23,7 @@ export class CreatesurveyComponent {
 
   addQuestion() {
     const questionGroup = new FormGroup({
+      questionNumber: new FormControl(),
       type: new FormControl(),  
       title: new FormControl(),
       options: new FormArray([]),
@@ -47,6 +48,10 @@ export class CreatesurveyComponent {
   }
 
   onSubmitCreateSurvey() {
+    // this.createSurveyFormGroup.controls
+    this.questions.controls.forEach((question, index) => {
+      (question as FormGroup).get('questionNumber')?.setValue(index + 1);
+    });
     console.log(this.createSurveyFormGroup); 
   }
 

@@ -11,9 +11,16 @@
 
 .mcq-options-container div {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-direction: column;
 }
 
+.mcq-options-container div div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
 .mcq-options-container div input[type='text'], 
 .mcq-options-container div button {
     padding: 0.2rem 1rem;
