@@ -1,3 +1,6 @@
 <div class="main-container">
-    <div>Fill Survey</div>
+    <div class="survey-id-container" [formGroup]="surveyIdFormGoup">
+        <input type="text" formControlName="surveyId">
+        <button type="button" (click)="getSurveyById()">Get Survey</button>
+    </div>
 </div>

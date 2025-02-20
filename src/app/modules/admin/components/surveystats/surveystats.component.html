@@ -1,1 +1,21 @@
-<p>surveystats works!</p>
+<div class="main-container">
+    <div class="survey-id-container" [formGroup]="surveyIdGroup">
+        <input type="text" formControlName="surveyId">
+        <button type="button" (click)="getSurveyById()">Get Survey</button>
+    </div>
+    <div class="survey-header-data" *ngIf="surveyDetails">
+        {{ surveyDetails.title }}
+    </div>
+    <div class="responses-container" *ngIf="surveyDetails">
+        <table>
+            <tr>
+                <th>Response ID</th>
+                <th *ngFor="let question of surveyDetails.questions">{{ question.title }}</th>
+            </tr>
+            <tr *ngFor="let response of surveyResponse">
+                <td>{{ response.responseId }}</td>
+                <td *ngFor="let answer of response.answers">{{ getNonNullAnswer(answer) }}</td>
+            </tr>
+        </table>
+    </div>    
+</div>

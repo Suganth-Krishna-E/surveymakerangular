@@ -15,6 +15,7 @@ import { ScqanswerComponent } from './components/createsurvey/sub-components/scq
 import { McqanswerComponent } from './components/createsurvey/sub-components/mcqanswer/mcqanswer.component';
 import { NumberanswerComponent } from './components/createsurvey/sub-components/numberanswer/numberanswer.component';
 import { FileanswerComponent } from './components/createsurvey/sub-components/fileanswer/fileanswer.component';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { FileanswerComponent } from './components/createsurvey/sub-components/fi
     ScqanswerComponent,
     McqanswerComponent,
     NumberanswerComponent,
-    FileanswerComponent
+    FileanswerComponent,
   ],
   imports: [
     CommonModule,

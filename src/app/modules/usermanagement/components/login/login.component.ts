@@ -17,6 +17,6 @@ export class LoginComponent {
   }
 
   onSubmitLogin() {
-    console.log(this.loginFormGroup);
+    
   }
 }

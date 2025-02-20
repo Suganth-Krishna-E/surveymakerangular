@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { SurveyService } from '../../services/survey.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-createsurvey',
@@ -7,14 +10,20 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
   styleUrl: './createsurvey.component.css'
 })
 export class CreatesurveyComponent {
+  adminId!: string;
   createSurveyFormGroup: FormGroup;
-  constructor() {
+
+  constructor(private surveyService: SurveyService, private route: ActivatedRoute, private router: Router) {
     this.createSurveyFormGroup = new FormGroup({
       title: new FormControl('', []),
       description: new FormControl('', []),
-      questions: new FormArray([]),  
+      questions: new FormArray([]),
+      adminId: new FormControl()
     });
+  }
 
+  ngOnInit() {
+    this.createSurveyFormGroup.controls['adminId'].setValue(this.route.parent?.snapshot.paramMap.get('id'));
   }
 
   get questions() {
@@ -44,15 +53,41 @@ export class CreatesurveyComponent {
   }
 
   deleteQuestion(index: number) {
-    this.questions.removeAt(index);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Do you want to delete this question?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.questions.removeAt(index);
+      }
+    });
   }
 
   onSubmitCreateSurvey() {
-    // this.createSurveyFormGroup.controls
     this.questions.controls.forEach((question, index) => {
       (question as FormGroup).get('questionNumber')?.setValue(index + 1);
     });
-    console.log(this.createSurveyFormGroup); 
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Do you want to publish this survey?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, publish it!',
+      cancelButtonText: 'No, cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.surveyService.publishSurvey(this.createSurveyFormGroup.value).subscribe({
+          next: (response) => {
+            Swal.fire('Published!', response.toString(), 'success');
+          }
+        });
+      }
+    });
   }
 
   trackByFn(index: number, item: any) {

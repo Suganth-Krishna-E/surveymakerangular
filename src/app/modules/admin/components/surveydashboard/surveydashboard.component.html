@@ -1,1 +1,6 @@
-<p>surveydashboard works!</p>
+<div class="survey-details-container">
+    <div class="survey-detail" *ngFor="let survey of listOfSurveys;">
+        <h2>{{ survey.surveyId }}</h2>
+        <h4>{{ survey.surveyTitle }}</h4>
+    </div>
+</div>

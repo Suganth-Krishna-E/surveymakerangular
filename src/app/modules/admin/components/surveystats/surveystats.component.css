@@ -1,0 +1,47 @@
+* {
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.survey-id-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.survey-id-container input,
+.survey-id-container button {
+    border-radius: 1rem;
+}
+
+.survey-header-data {
+    border-radius: 1rem;
+    border: 2px solid black;
+    font-size: 1.5rem;
+}
+
+.responses-container {
+    border: 2px solid black;
+    border-radius: 1rem;
+}
+
+.responses-container table {
+    border-collapse: collapse;
+}
+
+.responses-container table tr:nth-child(even) {
+    background-color: aliceblue;
+}
+
+.responses-container table tr td {
+    border: 2px solid black;
+    border-radius: 1rem;
+}
+
