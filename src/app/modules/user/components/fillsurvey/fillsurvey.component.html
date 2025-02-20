@@ -1,6 +1,11 @@
 <div class="main-container">
-    <div class="survey-id-container" [formGroup]="surveyIdFormGoup">
+    <div class="survey-id-container" [formGroup]="surveyIdFormGroup">
         <input type="text" formControlName="surveyId">
         <button type="button" (click)="getSurveyById()">Get Survey</button>
+    </div>
+    <div class="survey-container">
+        <h2>{{ surveyDetailFormGroup.controls['title'].value }}</h2>
+        <h4>{{ surveyDetailFormGroup.controls['description'].value }}</h4>
+        
     </div>
 </div>

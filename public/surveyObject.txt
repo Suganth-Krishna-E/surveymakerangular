@@ -51,3 +51,62 @@
     ],
     "adminId": "Suganth Krishna E"
 }
+
+
+
+{
+    "surveyId": "67ab175399af5f3a6d9f3500",
+    "title": "Simple Survey",
+    "description": "Survey Description",
+    "questions": [
+        {
+            "questionNumber": "1",
+            "title": "Employee Name",
+            "type": "text",
+            "options": [],
+            "notes": "",
+            "fileType": ""
+        },
+        {
+            "questionNumber": "2",
+            "title": "Employee Id",
+            "type": "numeric",
+            "options": [],
+            "notes": "",
+            "fileType": ""
+        },
+        {
+            "questionNumber": "3",
+            "title": "Department",
+            "type": "scq",
+            "options": [
+                "Yarn winding",
+                "Dying"
+            ],
+            "notes": "",
+            "fileType": ""
+        },
+        {
+            "questionNumber": "4",
+            "title": "Call by",
+            "type": "mcq",
+            "options": [
+                "He",
+                "Him",
+                "Her",
+                "She"
+            ],
+            "notes": "",
+            "fileType": ""
+        },
+        {
+            "questionNumber": "5",
+            "title": "Addhar",
+            "type": "file",
+            "options": [],
+            "notes": "",
+            "fileType": "pdf"
+        }
+    ],
+    "adminId": "Suganth Krishna E"
+}
