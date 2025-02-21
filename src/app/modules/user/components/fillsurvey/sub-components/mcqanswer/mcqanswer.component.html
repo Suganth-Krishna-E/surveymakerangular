@@ -1,0 +1,8 @@
+<div class="mcq-options-container" [formGroup]="answerFormGroup">
+  <div formArrayName="options">
+    <div *ngFor="let optionControl of optionsFromArray.controls; let i = index">
+      <input type="checkbox" name="options-mcq" [formControl]="getAnswerData(i)" />
+      <label>{{ optionControl.value }}</label>
+    </div>
+  </div>
+</div>

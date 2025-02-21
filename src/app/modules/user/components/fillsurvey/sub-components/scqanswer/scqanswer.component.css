@@ -1,0 +1,29 @@
+* {
+    font-size: 1.1rem;
+    border-radius: 1rem;
+}
+
+.scq-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.scq-options-container div {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.scq-options-container div div {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.scq-options-container div input[type='text'], 
+.scq-options-container div button {
+    padding: 0.2rem 1rem;
+    margin-right: 1rem;
+}

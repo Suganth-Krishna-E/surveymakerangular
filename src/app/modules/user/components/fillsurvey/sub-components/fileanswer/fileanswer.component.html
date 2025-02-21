@@ -1,0 +1,3 @@
+<div class="file-input-container" [formGroup]="answerFormGroup">
+  <input type="file" [attr.accept]="answerFormGroup.get('fileType')?.value" formControlName="answer" />
+</div>

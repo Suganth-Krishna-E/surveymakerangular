@@ -6,12 +6,24 @@ import { FillsurveyComponent } from './components/fillsurvey/fillsurvey.componen
 import { UserhomeComponent } from './components/userhome/userhome.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { QuestionComponent } from './components/fillsurvey/sub-components/question/question.component';
+import { FileanswerComponent } from './components/fillsurvey/sub-components/fileanswer/fileanswer.component';
+import { McqanswerComponent } from './components/fillsurvey/sub-components/mcqanswer/mcqanswer.component';
+import { NumberanswerComponent } from './components/fillsurvey/sub-components/numberanswer/numberanswer.component';
+import { ScqanswerComponent } from './components/fillsurvey/sub-components/scqanswer/scqanswer.component';
+import { TextanswerComponent } from './components/fillsurvey/sub-components/textanswer/textanswer.component';
 
 
 @NgModule({
   declarations: [
     FillsurveyComponent,
-    UserhomeComponent
+    UserhomeComponent,
+    QuestionComponent,
+    FileanswerComponent,
+    McqanswerComponent,
+    NumberanswerComponent,
+    ScqanswerComponent,
+    TextanswerComponent
   ],
   imports: [
     CommonModule,

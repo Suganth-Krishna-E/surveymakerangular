@@ -1,0 +1,33 @@
+.file-input-type-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.file-input-container {
+    padding: 1rem;
+}
+
+.file-type-selector-container {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+.file-input-container input {
+    width: 80%;
+    padding: 1rem;
+    border: 1px solid black;
+    font-size: 1.1rem;
+    border-radius: 1rem;
+}
+
+.file-type-selector-container select,
+.file-type-selector-container input {
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid black;
+}

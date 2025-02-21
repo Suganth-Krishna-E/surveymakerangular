@@ -20,6 +20,7 @@ export class SurveystatsComponent {
   }
 
   getSurveyById() {
+    
     this.surveyService
       .getSurveyDetailsBySurveyId(this.surveyIdGroup.controls['surveyId'].value)
       .subscribe({

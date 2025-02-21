@@ -1,0 +1,19 @@
+<div class="question-container" [formGroup]="formGroupQuestion">
+  <div class="question-title-type-container">
+    <div class="question-title-container">
+      {{ formGroupQuestion.controls['questionNumber'].value + ')' }} {{ formGroupQuestion.controls['title'].value }}
+    </div>
+  </div>  
+
+  <div class="answer-delete-button-container">
+    <div class="answer-container">
+      <ng-container [ngSwitch]="selectedType">
+        <app-textanswer [answerFormGroup]="getFormControl()" *ngSwitchCase="'text'"></app-textanswer>
+        <app-scqanswer [answerFormGroup]="getFormControl()" *ngSwitchCase="'scq'"></app-scqanswer>
+        <app-mcqanswer [answerFormGroup]="getFormControl()" *ngSwitchCase="'mcq'"></app-mcqanswer>
+        <app-numberanswer [answerFormGroup]="getFormControl()" *ngSwitchCase="'numeric'"></app-numberanswer>
+        <app-fileanswer [answerFormGroup]="getFormControl()" *ngSwitchCase="'file'"></app-fileanswer>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,10 @@ export class SurveyService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     const response = this.http.post(`${this.apiUrl}/publish`, surveyData, { headers }).pipe(
-      catchError(this.handleError)
+      catchError((error) => {
+        Swal.fire('Error!', `${error.error}`, 'error');
+        return new Observable<any>;
+      })
     );
 
     return response;
@@ -27,11 +30,11 @@ export class SurveyService {
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       Swal.fire('Error!', `🛑 Network error`, 'error');
+      return new Observable<any>;
     } else {
-      console.log(error)
       Swal.fire('Error!', `${error.error}`, 'error');
+      return new Observable<any>;
     }
-    return new Observable<any>;
   }
 
   getAllSurveysByAdminId(adminId: string): Observable<any> {
@@ -46,7 +49,10 @@ export class SurveyService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.get(`${this.apiUrlResponse}/getResponsesBySurveyId/${surveyId}`, { headers }).pipe(
-      catchError(this.handleError)
+      catchError((error) => {
+        Swal.fire('Error!', `${error.error}`, 'error');
+        return new Observable<any>;
+      })
     );
   }
 

@@ -1,0 +1,8 @@
+<div class="scq-options-container" [formGroup]="answerFormGroup">
+  <div>
+    <div *ngFor="let optionControl of optionsFromArray.controls; let i = index">
+      <input type="radio" formControlName="answer" name="answer" />
+      <label>{{ optionControl.value }}</label>
+    </div>
+  </div>
+</div>

@@ -36,6 +36,14 @@ export class FillsurveyComponent {
       });
   }
 
+  get questions() {
+    return this.surveyDetailFormGroup.controls['questions'] as FormArray;
+  }
+
+  getFormControl(index: number) {
+    return this.questions.controls[index] as FormGroup;
+  }
+
   fillSurveyDetailFormGroup() {
     this.surveyDetailFormGroup.controls['surveyId'].setValue(this.surveyDetail.surveyId);
     this.surveyDetailFormGroup.controls['title'].setValue(this.surveyDetail.title);
@@ -53,25 +61,34 @@ export class FillsurveyComponent {
           title: new FormControl(question.title),
           type: new FormControl(question.type),
           fileType: new FormControl(question.fileType),
+          answer: new FormControl()
         });
       } else if (question.type === 'scq') {
         newQuestion = new FormGroup({
           questionNumber: new FormControl(question.questionNumber),
           title: new FormControl(question.title),
           type: new FormControl(question.type),
-          options: new FormControl(question.options),
+          options: new FormArray([]),
+          answer: new FormControl()
+        });
+
+        const optionsArray = this.getOptionsFormArray(newQuestion);
+        question.options.forEach(option => {
+          optionsArray.push(new FormControl(option));
         });
       } else if (question.type === 'text') {
         newQuestion = new FormGroup({
           questionNumber: new FormControl(question.questionNumber),
           title: new FormControl(question.title),
           type: new FormControl(question.type),
+          answer: new FormControl()
         });
       } else if (question.type === 'numeric') {
         newQuestion = new FormGroup({
           questionNumber: new FormControl(question.questionNumber),
           title: new FormControl(question.title),
           type: new FormControl(question.type),
+          answer: new FormControl()
         });
       } else if (question.type === 'mcq') {
         newQuestion = new FormGroup({
@@ -79,6 +96,7 @@ export class FillsurveyComponent {
           title: new FormControl(question.title),
           type: new FormControl(question.type),
           options: new FormArray([]),
+          answer: new FormArray([])
         });
 
         const optionsArray = this.getOptionsFormArray(newQuestion);
