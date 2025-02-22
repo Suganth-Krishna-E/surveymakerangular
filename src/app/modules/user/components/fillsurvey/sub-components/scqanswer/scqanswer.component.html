@@ -1,8 +1,8 @@
 <div class="scq-options-container" [formGroup]="answerFormGroup">
   <div>
-    <div *ngFor="let optionControl of optionsFromArray.controls; let i = index">
-      <input type="radio" formControlName="answer" name="answer" />
-      <label>{{ optionControl.value }}</label>
+    <div *ngFor="let optionControl of optionsFromArray.controls; let i = index; trackBy: trackByFn" >
+      <input type="radio" name="answer" [formControl]="selectedAnswer" [id]="answerFormGroup.value.questionNumber+'scq'+i" [value]="optionControl.value" />
+      <label [for]="answerFormGroup.value.questionNumber+'scq'+i">{{ getLabel(i) }}</label>
     </div>
   </div>
 </div>

@@ -30,4 +30,8 @@ export class McqanswerComponent {
   getAnswerData(index: number): FormControl {
     return this.answersFormArray.at(index) as FormControl;
   }
+
+  trackByFn(index: number, item: any): number {
+    return item.id; // Unique identifier
+  }
 }

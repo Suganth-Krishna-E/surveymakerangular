@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { SurveyService } from '../../../admin/services/survey.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-fillsurvey',
@@ -8,11 +9,17 @@ import { SurveyService } from '../../../admin/services/survey.service';
   styleUrl: './fillsurvey.component.css',
 })
 export class FillsurveyComponent {
+  userName!: string;
+
   surveyIdFormGroup: FormGroup;
   surveyDetail!: SurveyDetail;
   surveyDetailFormGroup: FormGroup;
 
-  constructor(private surveyService: SurveyService) {
+  ngOnInit() {
+    this.userName = this.route.parent?.snapshot.paramMap.get('id') || '';
+  }
+
+  constructor(private surveyService: SurveyService, private route: ActivatedRoute, private router: Router) {
     this.surveyIdFormGroup = new FormGroup({
       surveyId: new FormControl(),
     });
@@ -50,7 +57,6 @@ export class FillsurveyComponent {
     this.surveyDetailFormGroup.controls['description'].setValue(this.surveyDetail.description);
 
     const questionsArray = this.surveyDetailFormGroup.get('questions') as FormArray;
-    questionsArray.clear();
 
     this.surveyDetail.questions.forEach((question: QuestionSurveyDetail) => {
       let newQuestion: FormGroup;
@@ -72,9 +78,9 @@ export class FillsurveyComponent {
           answer: new FormControl()
         });
 
-        const optionsArray = this.getOptionsFormArray(newQuestion);
+        const newAnswerOptions = this.getOptionsFormArray(newQuestion);
         question.options.forEach(option => {
-          optionsArray.push(new FormControl(option));
+          newAnswerOptions.push(new FormControl(option));
         });
       } else if (question.type === 'text') {
         newQuestion = new FormGroup({
@@ -99,9 +105,8 @@ export class FillsurveyComponent {
           answer: new FormArray([])
         });
 
-        const optionsArray = this.getOptionsFormArray(newQuestion);
         question.options.forEach(option => {
-          optionsArray.push(new FormControl(option));
+          this.getOptionsFormArray(newQuestion).push(new FormControl(option));
         });
       } else {
         return; 
@@ -114,6 +119,79 @@ export class FillsurveyComponent {
   getOptionsFormArray(newQuestion: FormGroup): FormArray {
     return newQuestion.get('options') as FormArray;
   }
+
+  subtmitResponse() {
+    const mappedSurvey = this.mapSurvey(this.surveyDetailFormGroup.value, this.userName);
+  }
+
+  trackByFn(index: number, item: any): number {
+    return item.id;
+  }
+
+  mapSurvey(input: SurveyInput, userId: string): SurveyOutput {
+    const answers: Answer[] = input.questions.map(q => {
+        const answer: Answer = { questionId: `${q.questionNumber}` };
+  
+        switch (q.type) {
+            case "text":
+                answer.answerText = q.answer;
+                break;
+            case "numeric":
+                answer.answerNumber = q.answer;
+                break;
+            case "scq":
+                answer.answerScq = q.answer;
+                break;
+            case "mcq":
+                if (q.answer && Array.isArray(q.answer) && q.options) {
+                    answer.answerMcq = q.options.filter((_, index) => q.answer[index]);
+                }
+                break;
+            case "file":
+                answer.answerFile = q.answer;
+                break;
+        }
+        return answer;
+    });
+  
+    return {
+        surveyId: input.surveyId,
+        userId,
+        answers
+    };
+  }
+  
+}
+
+interface SurveyInput {
+  surveyId: string;
+  title: string;
+  description: string;
+  questions: Question[];
+}
+
+interface Question {
+  questionNumber: string;
+  title: string;
+  type: string;
+  answer?: any;
+  options?: string[];
+  fileType?: string;
+}
+
+interface SurveyOutput {
+  surveyId: string;
+  userId: string;
+  answers: Answer[];
+}
+
+interface Answer {
+  questionId: string;
+  answerText?: string;
+  answerNumber?: number;
+  answerScq?: string;
+  answerMcq?: string[];
+  answerFile?: string;
 }
 
 interface SurveyDetail {

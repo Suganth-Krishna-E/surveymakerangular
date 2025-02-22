@@ -1,6 +1,6 @@
 <div class="mcq-options-container" [formGroup]="answerFormGroup">
     <div formArrayName="options">
-      <div *ngFor="let optionControl of optionsFromArray.controls; let i = index">
+      <div *ngFor="let optionControl of optionsFromArray.controls; let i = index trachBy: trackByFn">
         <input type="checkbox" name="options-mcq" [disabled]="true" />
         <input
           type="text"

@@ -1,0 +1,41 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.survey-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.question-container {
+    width: 75%;
+    font-size: 1rem;
+}
+
+.survey-id-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.survey-id-container input, 
+.survey-id-container button {
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.submit-button-container button {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: rgb(67, 144, 225);
+    color: white;
+    font-size: 1rem;
+}

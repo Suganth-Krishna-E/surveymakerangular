@@ -3,12 +3,15 @@
         <input type="text" formControlName="surveyId">
         <button type="button" (click)="getSurveyById()">Get Survey</button>
     </div>
-    <div class="survey-container">
-        <h2>{{ surveyDetailFormGroup.controls['title'].value }}</h2>
-        <h4>{{ surveyDetailFormGroup.controls['description'].value }}</h4>
+    <form class="survey-container">
+        <h1>{{ surveyDetailFormGroup.controls['title'].value }}</h1>
+        <h2>{{ surveyDetailFormGroup.controls['description'].value }}</h2>
         
-        <div class="question-container" *ngFor="let question of questions.value; let i = index">
+        <div class="question-container" *ngFor="let question of questions.value; let i = index trackBy: trackByFn">
             <app-question [formGroupQuestion]="getFormControl(i)"></app-question>
         </div>
-    </div>
+        <div class="submit-button-container">
+            <button type="button" (click)="subtmitResponse()">Submit Response</button>
+        </div>
+    </form>    
 </div>

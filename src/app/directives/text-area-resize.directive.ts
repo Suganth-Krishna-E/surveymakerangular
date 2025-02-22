@@ -18,6 +18,7 @@ export class TextAreaResizeDirective {
     const textArea = this.element.nativeElement;
     textArea.style.height = 'auto';
     textArea.style.height = `${textArea.scrollHeight}px`;
+    textArea.style.border = '2px solid black'
   }
 
 
